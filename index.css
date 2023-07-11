@@ -1,6 +1,10 @@
 :root {
     --header-bg-color: rgb(189, 76, 76);
     --main-bg-color: rgb(2, 52, 87);
+    --month-modal-bg-color: hsla(0, 1%, 14%, 0.995);
+    --overlay-bg-color: rgba(39, 39, 46, 0.963);
+    --month-div-bg-color: rgb(60, 60, 62);
+    --month-div-border-bg-color: rgb(44, 44, 46);
 }
 
 body, html {
@@ -10,12 +14,9 @@ body, html {
     height: 100%;
 }
 
-.container, .header {
+.container {
     display: flex;
     align-items: center;
-}
-
-.container {
     min-width: 100%;
     min-height: 100%;
     flex-direction: column;
@@ -23,12 +24,14 @@ body, html {
 }
 
 .header {
+    display: flex;
     width: calc(100% - 32px);
     height: 120px;
     color: white;
     background-color: var(--header-bg-color);
     padding: 16px;
     justify-content: space-between;
+    align-items: center;
 }
 
 .buttons-header {
@@ -47,4 +50,61 @@ body, html {
     margin: 8px;
     padding: 8px;
     text-align: center;
+}
+
+.buttons-header div:hover, .month:hover, .day:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    background: var(--overlay-bg-color);
+    cursor: pointer;    
+}
+
+.month-modal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 1400px;
+    height: 800px;
+    background-color: var(--month-modal-bg-color);
+    cursor: auto;
+}
+
+.month, .day  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    margin: 16px;
+    color: white;
+    border: 8px solid var(--month-div-border-bg-color);
+    background-color: var(--month-div-bg-color);
+}
+
+.month {
+    width: 180px;
+    aspect-ratio: 1 / 1;
+    font-size: 32px;
+}
+
+.day {
+    font-size: 24px;
+    width: 80px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
 }
