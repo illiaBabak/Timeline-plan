@@ -1,10 +1,13 @@
 :root {
-    --header-bg-color: rgb(189, 76, 76);
-    --main-bg-color: rgb(2, 52, 87);
-    --month-modal-bg-color: hsla(0, 1%, 14%, 0.995);
-    --overlay-bg-color: rgba(39, 39, 46, 0.963);
-    --month-div-bg-color: rgb(60, 60, 62);
-    --month-div-border-bg-color: rgb(44, 44, 46);
+    --header-bg-color: rgb(244,90,105);
+    --main-bg-color: rgb(113, 150, 188);
+    --month-modal-bg-color: rgb(250,235,215);
+    --overlay-bg-color: rgba(39, 39, 46, 0.863);
+    --month-div-bg-color: rgba(212, 122, 131, 0.959);
+    --month-div-border-bg-color: rgba(203, 107, 117, 0.952);
+    --hour-p-bg-color: rgb(82, 84, 95);
+    --input-note-div-bg-color: rgb(87, 87, 91);
+    --input-note-div-color: rgb(64, 65, 69);
 }
 
 body, html {
@@ -12,6 +15,7 @@ body, html {
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     height: 100%;
+    background-color: var(--main-bg-color);
 }
 
 .container {
@@ -20,7 +24,6 @@ body, html {
     min-width: 100%;
     min-height: 100%;
     flex-direction: column;
-    background-color: var(--main-bg-color);
 }
 
 .header {
@@ -52,7 +55,7 @@ body, html {
     text-align: center;
 }
 
-.buttons-header div:hover, .month:hover, .day:hover {
+.buttons-header div:hover, .month:hover, .day:hover, .save-button:hover, .close-button:hover {
     transform: scale(1.1);
     transition: 0.5s;
     cursor: pointer;
@@ -67,7 +70,7 @@ body, html {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 2;
     background: var(--overlay-bg-color);
     cursor: pointer;    
@@ -102,9 +105,98 @@ body, html {
     font-size: 32px;
 }
 
+@media only screen and (max-width: 1240px) {
+    
+}
+
+@media only screen and (max-width: 1040px) {
+    .month {
+        width: 120px;
+        font-size: 28px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .month-modal {
+        width: 100%;
+        height: 1000px;
+    }
+
+    .month {
+        width: 90px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .title {
+        font-size: 20px;
+    }
+
+    .buttons-header div {
+        width: 110px;
+        height: 55px;
+        font-size: 16px;
+    }
+
+    .month {
+        width: 80px;
+        font-size: 18px;
+    }
+}
+
 .day {
     font-size: 24px;
     width: 80px;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
+}
+
+.note {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    margin: 4px;
+    padding: 4px;
+}
+
+.note p {
+    font-size: 16px;
+    color: var(--hour-p-bg-color);
+    margin-right: 16px;
+}
+
+.input-note {
+    width: 370px;
+    height: 20px;
+    padding: 4px;
+    border: 2px solid var(--month-div-border-bg-color);
+    border-right: none;
+    border-left: none;
+    color: var(--input-note-div-color);
+    background-color: var(--month-modal-bg-color);
+    cursor: pointer;
+}
+
+.input-note:hover {
+    transform: scale(1.03);
+    transition: 0.5s;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    width: 110px;
+    height: 50px;
+    background-color: var(--month-div-bg-color);
+    border: 4px solid var(--month-div-border-bg-color);
 }
