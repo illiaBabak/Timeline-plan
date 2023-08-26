@@ -8,6 +8,7 @@
     --hour-p-bg-color: rgb(82, 84, 95);
     --input-note-div-bg-color: rgb(87, 87, 91);
     --input-note-div-color: rgb(64, 65, 69);
+    --line-bg-color: rgb(245, 225, 199);
 }
 
 body, html {
@@ -74,6 +75,7 @@ body, html {
     z-index: 2;
     background: var(--overlay-bg-color);
     cursor: pointer;    
+    overflow-y: hidden;
 }
 
 .month-modal {
@@ -86,6 +88,7 @@ body, html {
     height: 800px;
     background-color: var(--month-modal-bg-color);
     cursor: auto;
+    overflow-y: auto;
 }
 
 .month, .day  {
@@ -103,10 +106,6 @@ body, html {
     width: 180px;
     aspect-ratio: 1 / 1;
     font-size: 32px;
-}
-
-@media only screen and (max-width: 1240px) {
-    
 }
 
 @media only screen and (max-width: 1040px) {
@@ -200,3 +199,290 @@ body, html {
     background-color: var(--month-div-bg-color);
     border: 4px solid var(--month-div-border-bg-color);
 }
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.graph-block-right, .graph-block-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: -20px;
+    position: relative;
+}
+
+.graph-block-left {
+    right: 46.6%;
+}
+
+.graph-block-right {
+    left: 46.8%;
+}
+
+.first-col, .second-col, .second-col-rotate {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 4px;
+}
+
+.second-col, .second-col-rotate {
+    justify-content: flex-end;
+    padding: 20px;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-name: opacityAnimation;
+}
+
+.line {
+    width: 14px;
+    height: 0;
+    background-color: white;
+    border-radius: 4px;
+    animation-name: lineAnimation;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+}
+
+@keyframes lineAnimation {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 330px;
+    }
+}
+
+.circle { 
+    position: relative;
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    z-index: 2;
+    border-radius: 50%;
+    background-color: var(--header-bg-color);
+    animation-name: opacityAnimation;
+    animation-duration: 0.5s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+@keyframes opacityAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.message {
+    display: flex;
+    width: 450px;
+    height: 220px;
+    border-radius: 8px 8px 8px 0;
+    flex-direction: column;
+    padding: 8px;
+    color: white;
+    background-color: var(--header-bg-color);
+}
+
+.message-div {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+
+.triangle {
+	width: 0;
+	height: 0;
+	border-top: 20px solid transparent;
+	border-right: 40px solid var(--header-bg-color);
+	border-bottom: 20px solid transparent;
+}
+
+.second-col-rotate, .second-col-rotate p, .second-col-rotate h3 {
+    transform: rotateY(180deg);
+}
+
+@media only screen and (max-width: 1600px) {
+    .graph-block-left {
+        right: 46.6%;
+    }
+}
+
+@media only screen and (max-width: 1240px) {
+    .message {
+        width: 400px;
+        height: 180px;
+    }
+
+    .line {
+        width: 12px;
+    }
+
+    .circle {
+        width: 24px;
+        height: 24px;
+    }
+
+    
+    .graph-block-left {
+        right: 47.1%;
+    }
+
+    .note {
+        width: 400px;
+    }
+
+    .input-note {
+        width: 300px;
+    }
+
+    .close-button {
+        width: 90px;
+        height: 40px;
+    }
+}
+
+@media only screen and (max-width: 1040px) {
+    .message {
+        width: 300px;
+        height: 200px;
+    }
+
+    .message h3 {
+        font-size: 18px;
+    }
+
+    .line {
+        width: 10px;
+    }
+
+    .circle {
+        width: 20px;
+        height: 20px;
+    }
+
+    
+    .graph-block-left {
+        right: 46.6%;
+    }
+
+    .note {
+        width: 300px;
+    }
+
+    .input-note {
+        width: 200px;
+    }
+
+    .close-button {
+        width: 80px;
+        height: 30px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    .second-col-rotate, .second-col-rotate p, .second-col-rotate h3 {
+        transform: rotateY(0deg);
+    }
+
+    .graph-block-left {
+        flex-direction: row-reverse;
+    }
+
+    .graph-block-left, .graph-block-right {
+        position: relative;
+        left: -50%;
+        transform: translate(50%, 0);
+    }
+
+    .main {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .note {
+        width: 400px;
+    }
+
+    .input-note {
+        width: 300px;
+    }
+
+    .column {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .close-button {
+        width: 375px;
+        height: 50px;
+        margin: 16px;
+    }
+
+    .month-modal {
+        height: 100%;
+    }
+
+    .message {
+        width: 270px;
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .input-note {
+        width: 240px;
+    }
+
+    .note p {
+        margin-right: 8px;
+    }
+
+    .message {
+        width: 240px;
+        height: 170px;
+    }
+
+    .message h3 {
+        font-size: 16px;
+    }
+
+    .line {
+        width: 8px;
+    }
+
+    .circle {
+        width: 16px;
+        height: 16px;
+    }
+
+    .second-col, .second-col-rotate {
+        padding: 2px;
+        margin-bottom: 12px;
+    }
+
+    .triangle {
+        border-top: 10px solid transparent;
+        border-right: 20px solid var(--header-bg-color);
+        border-bottom: 10px solid transparent;
+    }
+}
+
+.hide-scroll {
+    overflow: hidden;
+}
+
